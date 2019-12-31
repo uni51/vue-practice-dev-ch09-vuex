@@ -41,6 +41,8 @@ export default {
       // console.log(this.$store.state.count)
     }
   }
+
+  //methods: mapMutations([ 'plus', 'minus' ])  
 }
 </script>
 
