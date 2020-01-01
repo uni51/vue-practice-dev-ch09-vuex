@@ -54,6 +54,21 @@ export default new Vuex.Store({
       state.books.push(payload.book)
     }   
   },
-  actions: {    
+  actions: {
+    addAsync(context, payload) {
+      // 5000ミリ秒後にミューテーション（ADD_BOOK）をコミット
+      setTimeout(function() {
+        context.commit(ADD_BOOK, payload)
+      }, 5000)
+    }
+    
+    /*
+    // ES2015の分割代入を利用した場合
+    addAsync({ commit }, payload) {
+      setTimeout(function() {
+        commit(ADD_BOOK, payload)
+      }, 5000);
+    }
+    */    
   }
 })

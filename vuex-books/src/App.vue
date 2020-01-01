@@ -19,6 +19,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'app',
@@ -32,23 +33,59 @@ export default {
     }
   },
   methods: {
+    //...mapActions([ 'addAsync' ]),
+    ...mapActions({ add: 'addAsync' }),
+
     // [登録]ボタンクリックでストアに反映
     onclick() {
+      //mapActions関数を使う場合
+      //this.addAsync(payload)
+      //this.add(payload)
+
+      //this.addAsync({
+      this.add({
+        book: {
+          isbn: this.isbn, title: this.title, price: this.price
+        }
+      })
+
+      /*
       // ミューテーションのaddBookメソッドを呼び出している      
       this.$store.commit('addBook', {
         book: {
           isbn: this.isbn, title: this.title, price: this.price
         }
       })
+      */
 
+      /*
       // オブジェクト形式でのcommitメソッド呼び出し
-      // this.$store.commit({
-      //   type: 'addBook',
-      //   book: {
-      //     isbn: this.isbn, title: this.title, price: this.price
-      //   }
-      // })
+      this.$store.commit({
+        type: 'addBook',
+        book: {
+          isbn: this.isbn, title: this.title, price: this.price
+        }
+      })
+      */
 
+     /*
+      //addAsyncアクションの呼び出し
+      this.$store.dispatch('addAsync', {
+        book: {
+          isbn: this.isbn, title: this.title, price: this.price
+        }
+      })
+      */     
+
+      /*
+      // オブジェクトリテラルにまとめてaddAsyncアクションの呼び出し
+      this.$store.dispatch({
+        type: 'addAsync',
+        book: {
+          isbn: this.isbn, title: this.title, price: this.price
+        }
+      })
+      */
     }
   }  
 }
