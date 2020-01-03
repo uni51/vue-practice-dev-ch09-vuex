@@ -1,18 +1,27 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    メイン：{{mainUpdated}} <br />
+    サブ：{{subUpdated}} <br />
+    <input type="button" value="更新" v-on:click="setUpdated" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
   name: 'app',
-  components: {
-    HelloWorld
-  }
+  computed: {
+    mainUpdated() {
+      return this.$store.state.main.updated;
+    },
+    subUpdated() {
+      return this.$store.state.sub.updated;
+    }
+  },
+  methods: {
+    setUpdated() {
+      this.$store.commit('setUpdated')
+    }   
+  } 
 }
 </script>
 
