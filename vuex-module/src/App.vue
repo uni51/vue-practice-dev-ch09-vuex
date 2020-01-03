@@ -10,14 +10,17 @@
 export default {
   name: 'app',
   computed: {
+    // mainモジュールの時刻を取得
     mainUpdated() {
       return this.$store.state.main.updated;
     },
+    // subモジュールの時刻を取得
     subUpdated() {
       return this.$store.state.sub.updated;
     }
   },
   methods: {
+    // main／subモジュールの時刻（updated）を取得
     setUpdated() {
       this.$store.commit('setUpdated')
     }   
