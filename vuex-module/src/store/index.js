@@ -12,9 +12,11 @@ export default new Vuex.Store({
   },
 
   state: {
+    hoge: 0
   },
   mutations: {
-  },
-  actions: {
+    hoge(state) {
+      state.hoge++;
+    }
   }
 })

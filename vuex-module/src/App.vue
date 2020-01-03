@@ -3,6 +3,9 @@
     メイン：{{mainUpdated}} <br />
     サブ：{{subUpdated}} <br />
     <input type="button" value="更新" v-on:click="setUpdated" />
+    <hr>
+    ゲッター： {{localUpdated}} {{hoge}}
+    <input type="button" value="+" v-on:click="updateHoge" />    
   </div>
 </template>
 
@@ -17,14 +20,25 @@ export default {
     // subモジュールの時刻を取得
     subUpdated() {
       return this.$store.state.sub.updated;
-    }
+    },
+    localUpdated() {
+      // return this.$store.getters.localUpdated;
+      return this.$store.getters['main/localUpdated'];
+    },    
+    hoge(){
+      //return this.$store.state.hoge;
+      return this.$store.getters['main/hoge'];
+    },    
   },
   methods: {
     // main／subモジュールの時刻（updated）を取得
     setUpdated() {
       this.$store.commit('main/setUpdated')
       this.$store.commit('sub/setUpdated')     
-    }   
+    },
+    updateHoge() {
+      this.$store.dispatch('main/hogeAction');
+    }       
   } 
 }
 </script>
